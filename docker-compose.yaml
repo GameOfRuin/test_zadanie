@@ -1,0 +1,20 @@
+services:
+  postgres:
+    container_name: test_zadani
+    image: postgres:17-alpine
+    restart: unless-stopped
+    ports:
+      - "55555:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: backend
+
+
+  redis:
+    container_name: test_zadani_redis1
+    image: redis:7-alpine
+    command: redis-server --requirepass redispassword
+    restart: unless-stopped
+    ports:
+      - "44444:6379"
